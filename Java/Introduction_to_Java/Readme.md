@@ -5,5 +5,6 @@
                _ConvertToCentimeters_ - method overloading in action </br></br>
                _PlayingCat_ - program with method that has a Boolean output </br></br> 
                _HoursMinutesSeconds_ - program to convert hours and seconds into hours, minutes, seconds, using conditional logic and method overloading </br></br>
-               _Main_ - program to explore switch and enhanced statements</br></br>
+               _Main_ - program to explore switch and enhanced statements</br></br
+               _Expansion_ - program to explore for loops in Java</br></br>
                
