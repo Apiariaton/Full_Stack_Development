@@ -1,18 +1,39 @@
-import ExpenseItem from "./components/ExpenseItem";
+import Expenses from "./components/Expenses";
 //import BarButton from './components/BarButton';
 //import SongEntry from "./components/SongEntry";
+import Songs from "./components/Songs";
+import CardNoBs from "./components/CardNoBs";
+
 import ChocCafeFranchiseProfile from "./components/ChocCafeFranchiseProfile";
 
+
+
 function App() {
+ 
   const song_entries = [
-    {
-      img_src:"./static/RobertoCarlos.jpg",
-      img_title: "Detalhes",
-      song_title: "Detalhes",
-      song_artist: "Roberto Carlos",
-      song_release_date: 1971
-    }
-  ];
+  {
+    img_src: "./static/RobertoCarlos.jpg",
+    img_title: "Detalhes",
+    song_title: "Detalhes",
+    song_artist: "Roberto Carlos",
+    song_release_date: 1971
+  },
+  {
+    img_src: "./static/ImagineDragons.jpg",
+    img_title: "Radioactive",
+    song_title: "Radioactive",
+    song_artist: "Imagine Dragons",
+    song_release_date: 2012
+  },
+  {
+    img_src: "./static/VicenteGarcia.jpg",
+    img_title: "Dulcito e Coco",
+    song_title: "Dulcito e Coco",
+    song_artist: "Vicente García",
+    song_release_date: 2016
+  }
+];
+
 
   const expenses = [
     {
@@ -52,27 +73,15 @@ function App() {
   return (
     <div>
       <h2 className="text-warning">Let's get started!</h2>
-      <ExpenseItem
-        id = {expenses[0].id}
-        title={expenses[0].title}
-        price={expenses[0].price}
-        date={expenses[0].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        id = {expenses[1].id}
-        title={expenses[1].title}
-        price={expenses[1].price}
-        date={expenses[1].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        id = {expenses[2].id}
-        title={expenses[2].title}
-        price={expenses[2].price}
-        date={expenses[2].date}
-      ></ExpenseItem>
+      <CardNoBs>
+      <Expenses expenses={expenses}></Expenses>
+      
+      <Songs song_entries={song_entries}/>
+      
       <ChocCafeFranchiseProfile
         franchise_profile = {franchise_profiles}
       ></ChocCafeFranchiseProfile>
+      </CardNoBs>
     </div>
   );
 }
