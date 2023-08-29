@@ -8,4 +8,5 @@
                _Main_ - program to explore switch and enhanced statements</br></br>
                _Expansion_ - program to explore for loops in Java</br></br>
                _Input__ - using an instance, error handling and do while loops - obtaining input via scanner which is permitted via Java, whereas console() is disabled by IDEs</br></br>
+               _BankAccount, NewBankAccount__ - exploration of the creation of new objects in Java; setting private attributes using private keyword; accessing their value using public (attributeDataType) method; setting their values using basic setter methods. This version does not yet have validation.</br></br>
                
