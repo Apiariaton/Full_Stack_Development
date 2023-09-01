@@ -1,4 +1,6 @@
-_Expenses_Tracker_ explores several key concepts within React, including: <br/><br/>
+_Expenses_Tracker_ is a user interface via which a user can track their monthly expenses which are then plotted as a chart. The user may add expenses via the submission of a form.
+
+ It explores several key concepts within React, including: <br/><br/>
 -React states <br/><br/>
 -Moving the State Up and Down <br/><br/>
 -The use of props and the channelling of data from App.js downwards <br/><br/>
