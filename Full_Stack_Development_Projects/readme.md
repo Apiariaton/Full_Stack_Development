@@ -1,4 +1,4 @@
-_Expenses_Tracker_ explores several key concepts within React, including:
+_Expenses_Tracker_ explores several key concepts within React, including: <br/>
 -React states
 -Moving the State Up and Down
 -The use of props and the channelling of data from App.js downwards
