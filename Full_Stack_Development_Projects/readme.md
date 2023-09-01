@@ -7,5 +7,5 @@ _Expenses_Tracker_ explores several key concepts within React, including:
 -The use of JSX in events handling (buttons/form submission), conditional elements, computed states
 -Componentisation
 
-It does this through a platform via which a user can track their monthly expenses that is then 
+It does this through a platform via which a user can track their monthly expenses which are then 
 plotted as a chart. They may add expenses via the submission of a form.
