@@ -7,5 +7,7 @@ state demonstrates some uses of the state concept in React, including the use of
 Shopping_Lists explores updating a parent element's state from a child component, using a save data function which is used as a prop.
 
 Alert window explores the use of computed states and conditional elements to show an alert window when the user presses a button.
+
+Dynamic styling explores the use of CSS modules and conditional styles in React.
 	
 
