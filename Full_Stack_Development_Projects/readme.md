@@ -11,3 +11,7 @@ _Expenses_Tracker_ is a user interface via which a user can track their monthly 
 
 It does this through a platform via which a user can track their monthly expenses which are then 
 plotted as a chart. They may add expenses via the submission of a form.
+
+_Interest Table__ features the use of a dynamic table and error correction in a form.
+
+__Login__ features the use of dynamic, deletable content, as well as the incorporation of a dialogue window via Material UI.
