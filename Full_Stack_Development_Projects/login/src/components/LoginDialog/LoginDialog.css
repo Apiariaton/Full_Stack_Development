@@ -1,0 +1,50 @@
+.logindialog {
+    background-color: white;
+    height:60vh;
+    width: 70vw;
+    display:flex;
+    flex-direction:column;
+}
+
+.logindialog__banner {
+    background-color: #4FBAC0;
+    height:12vh;
+    width: 70vw;
+}
+
+.logindialog__form_holder {
+    background-color: #c04f4f;
+    height:24vh;
+    width: 43.82vw;
+    display:flex;
+    align-self:center;
+    flex-direction:column;
+    margin-top:6vh;
+}
+
+.logindialog__form {
+    background-color: #ffffff;
+    height:24vh;
+    width: 43.82vw;
+}
+
+.logindialog__form div {
+    background-color: #ffffff;
+}
+
+.logindialog__form input {
+    background-color: white;
+    display:inline-block;
+    text-align:left;
+}
+
+.logindialog__form label {
+    background-color: white;
+    display:inline-block;
+    text-align:right;
+    height:2.4vh;
+}
+
+#submit {
+    align-self:right;
+}

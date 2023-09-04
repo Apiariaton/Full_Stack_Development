@@ -1,0 +1,34 @@
+/*
+dividerOne
+
+
+
+dividerTwo
+
+*/
+
+.dividerOne
+{
+  background-color:#0E0A42;
+  height:100vh;
+  width:100vw;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  margin-bottom: 1px;
+}
+
+.dividerTwo
+{
+  background-color:white;
+  height:100vh;
+  width:100vw;
+  display:row;
+  margin-top:10%;
+  
+}
+
+
+
+
+
