@@ -1,0 +1,10 @@
+.orderPanel {
+    padding-top:10%;
+    padding-bottom:10%;
+    background-color: #FFC6C6;
+    /*height:150vh;*/
+    width: 100vw;
+    display:grid; /*May need to change to accommodate items*/
+    justify-content:center;
+    align-items:center;    
+}   

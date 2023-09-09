@@ -1,0 +1,25 @@
+.openButton
+{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #F88E8E;
+    border-radius:100%;
+    max-width:80px;
+    max-height:80px;
+    min-width:15vh;
+    min-height:15vh;
+    font-size: min(5vh);
+}
+
+
+
+    
+
+.open {
+    color:limegreen;
+}
+
+.closed {
+    color:red;
+}

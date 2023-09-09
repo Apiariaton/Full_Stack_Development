@@ -1,0 +1,14 @@
+.restaurantName
+{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #FFC1C1;
+    border-radius:0%;
+    height:17vh;
+    width:33vw;
+    max-width:33vw;
+    min-width:15vw;
+    min-height:15vh;
+    font-size: min(5vh);
+}

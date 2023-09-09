@@ -1,0 +1,7 @@
+.backgroundBanner
+{
+    background-image: url("../../assets/Indian.jpg");
+    height:60vh;
+    width:100vw;
+    background-size:cover;
+}
