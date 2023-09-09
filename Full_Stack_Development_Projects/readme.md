@@ -15,3 +15,6 @@ plotted as a chart. They may add expenses via the submission of a form.
 _Interest Table__ features the use of a dynamic table and error correction in a form.
 
 __Login__ features the use of dynamic, deletable content, as well as the incorporation of a dialogue window via Material UI.
+
+
+_Food App_ enables the user to order items from a menu, such that their cart is updated. They may then access this cart via a dialogue window, and add or remove items as they wish. It features the use of the AuthcContext / useContext, useEffect and useReducer hooks, as well as dynamic list generation.
