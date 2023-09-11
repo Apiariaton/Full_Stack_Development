@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@200&display=swap');
+
+.header {
+    background-color:brown;
+    width:100vw;
+    height:33vh;    
+    justify-content: center;
+    align-items: center;
+    display:flex;
+}
+
+.box {
+    background-color: peachpuff;
+    height:15vh;
+    width: 33vw;
+    border-radius:  5% / 5%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    font-family: 'Inter', sans-serif;
+font-family: 'Poppins', sans-serif;
+}

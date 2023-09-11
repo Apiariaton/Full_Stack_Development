@@ -1,0 +1,25 @@
+.wrapper {
+    width:100vw;
+    display:flex;
+    justify-content: center;
+    padding-top:5%;
+}
+
+.daily_e {
+    width: 60vw;
+    display:block;
+
+    
+
+}
+
+.daily_e thead {
+    background-color:brown;
+    color:white;
+}
+
+.daily_e tbody {
+    background-color:peachpuff;
+    color:black;
+    
+}

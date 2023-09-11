@@ -1,0 +1,30 @@
+.background_deco {
+    background-image:url("../assets/maple.png");
+    height:100vh;
+    padding:5%;
+}
+
+.journal_form {
+    display:grid;
+    justify-content: center;
+
+}
+
+.journal_box  {
+    border: orange 5px;
+    background-color:blanchedalmond;
+    height:50vh;
+    width:50vw;
+    overflow-wrap:break-word;
+
+}
+
+.jlabel {
+    background-color:brown;
+    color:white;
+}
+
+.submitJournal {
+    background-color:brown;
+    color:white;
+}
