@@ -22,3 +22,5 @@ To limit re-render cycles, it can be worthwhile to specify an exact dependency b
 UseReducer allows the coder to reduce the number of states in use. It does so through use of a useReducer hook, which takes the state name and dispatch function as inputs for the reducer function, as well as an initial state and initial state setting function.
 
 The dispatch function conveys information, typically an object, to the reducer function. The reducer function then computes state on the basis of the object provided, such that the value of the state first declared within the useReducer function may change.
+
+Counter explores the use of Custom Hooks, which compartmentalise React logic, so that it can be included within different functional components. The logic may be customised by use of unique arguments to the function, conditional logic within the function, and the function's return value.
