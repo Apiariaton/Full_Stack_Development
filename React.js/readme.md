@@ -30,3 +30,6 @@ is customisable, taking an object to alter the nature of the request and a funct
 via a user input form, reducing the necessary number of parameters within useHTTP from two to one. UseHTTP
 contains a function, fetchData, which it returns, to avoid the use of a hook within useEffect: it can export 
 fetchData.
+
+
+Formal explores the use of a custom user input hook to be used within a form. To avoid infinite loops, it is important not to update a state directly within the body of a functional component: instead, it should be embedded within another function and anchored into place if necessary by using useCallback.
