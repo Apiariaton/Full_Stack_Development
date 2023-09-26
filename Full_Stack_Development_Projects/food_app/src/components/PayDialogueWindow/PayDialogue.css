@@ -1,0 +1,106 @@
+.pay_dialogue {
+  z-index: 99;
+  position: absolute;
+  background-color: white;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: row;
+  width: 70vw;
+  opacity: 98%;
+  margin: 16%;
+  margin-left: 10%;
+  margin-top: 15%;
+  border: black solid 1px;
+  border-radius: 5% / 5%;
+  padding: 5%;
+}
+
+.first_column {
+  display: flex;
+  flex-direction: column;
+  width: 35vw;
+  opacity: 98%;
+}
+
+.second_column {
+  margin-top: 5%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+  width: 35vw;
+  opacity: 98%;
+}
+
+.second_column .button_div {
+  max-width: 35vw;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -15%;
+  margin-right: 5%;
+  margin-bottom: 15%;
+}
+
+.back_panel {
+  width: 10vw;
+  display: flex;
+  align-items: center;
+  top: -5%;
+  left: 2%;
+  height: 70vh;
+  position: absolute;
+}
+
+.total_table {
+  margin-top: -2%;
+  margin-left: -35%;
+  max-width: 30vw;
+  border-collapse: separate;
+  border-spacing: 16vw 0;
+}
+
+.pay_form {
+  margin-left: 5%;
+  max-width: 35vw;
+  min-width: 35vw;
+  max-height: 30vh;
+  margin-bottom: 5%;
+}
+
+.pay_form .first_entries {
+  margin-top: 5%;
+  min-width: 30vw;
+  min-height: 5vh;
+}
+
+.pay_form .postcode {
+  margin-top: 5%;
+  width: 15vw;
+  min-height: 5vh;
+  margin-left: 0%;
+  margin-right: 10%;
+  position: relative;
+}
+
+.pay {
+  background-color: #661249;
+  border-radius: 15px;
+  color: white;
+  border: none;
+  min-height: 5vh;
+  min-width: 12vw;
+}
+
+.image_placeholder {
+  width: 32vw;
+  display: flex;
+  height: 35vw;
+  background-image: url("../../assets/payImage.jpg");
+  background-size: cover;
+}
+
+.pay_exit {
+  background-color: lightgrey;
+  border: none;
+  color: white;
+  font-size: 1rem;
+}

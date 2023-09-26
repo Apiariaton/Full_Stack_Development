@@ -8,7 +8,6 @@
     background-color:white;
     justify-content:center;
     width:70vw;
-    height:50vh;
     opacity:98%;
     margin:16%;
     margin-top:15%;
@@ -72,3 +71,24 @@
     font-size: 1rem;
     text-align: center;
 }
+
+.place_order_container {
+    display:flex;
+    width:60vw;
+    height:10vh;
+    justify-content: flex-end;
+    margin-top:15%;
+    margin-bottom:5%;
+
+}
+
+.place_order {
+    background-color: #661249;
+    color:white;
+    font-family: 'Inter', sans-serif;
+    border:none;
+    height:8vh;
+    width:15vw;
+    margin-right:-5%;
+}
+

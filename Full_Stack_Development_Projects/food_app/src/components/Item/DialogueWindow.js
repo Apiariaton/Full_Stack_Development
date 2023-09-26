@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useMemo, useCallback } from "react";
 import "./DialogueWindow.css";
 import Item from "./Item";
 import FoodDataProvider, { FoodData } from "../Store/food-data";
@@ -33,7 +33,7 @@ function DialogueWindow(props) {
   //   },
 
   let dish__data = foodData.dish_data;
-  let allItems = Object.values(dish__data);
+  let allItems = useMemo(()=>{return Object.values(dish__data)});
   console.log(allItems);
   console.log(allItems[0]);
   const first_item = allItems[0];
@@ -77,6 +77,7 @@ function DialogueWindow(props) {
               <th>Price </th>
             </tr>
           </thead>
+          {/* Example case - not the best use case as  */}
           {filteredItems.map((item) => {
             return (
               <React.Fragment>
@@ -97,10 +98,18 @@ function DialogueWindow(props) {
       <th scope="row">Total</th>
       <td> {(Math.round(foodData.totalPriceItems.total_cost * 100) / 100).toFixed(2)} </td>
     </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <th></th>
+        <td></td>
+    </tr>
   </tfoot>
         </table>
-
       </div>
+      <div className="place_order_container">
+      <button className="place_order" onClick={props.showPayDialogue}>Place Order</button>
+      </div>    
     </div>
   );
 }

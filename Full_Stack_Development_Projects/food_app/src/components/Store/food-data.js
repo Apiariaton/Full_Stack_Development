@@ -1,6 +1,6 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useState, useCallback } from "react";
 
-function inventoryReducer(state, { type, dish_item }) {
+function inventoryReducer(state, { type, dish_item, returnedData}) {
   //   Object format to pass into Inventory Reducer via dispatchDishAddMinus
   //   {
   //     type: 'ADD' / 'MINUS',
@@ -30,7 +30,7 @@ function inventoryReducer(state, { type, dish_item }) {
         },
       };
     }
-  } else if (type === "MINUS") console.log("MINUS has been run...");
+  } else if (type === "MINUS") {console.log("MINUS has been run...");
   if (dishItem.quantity === 0) {
     return { ...state, [dish_item]: { ...dishItem, error_code: -1 } };
   } else {
@@ -44,6 +44,13 @@ function inventoryReducer(state, { type, dish_item }) {
       },
     };
   }
+}
+else if (type === "UPDATE")
+{
+return {...state,
+  ...returnedData,
+};
+}
 }
 
 export const FoodData = React.createContext({
@@ -59,7 +66,7 @@ export const FoodData = React.createContext({
 //and manage state, as well as including props and props.children. Any values it conveys must be included as value props
 //within the values prop and within the original context which was created.
 export default function FoodDataProvider(props) {
-  
+
   
   const d = new Date();
   d.setHours(12, 0, 0);
@@ -80,8 +87,6 @@ export default function FoodDataProvider(props) {
     saturday: [opening, closing],
     sunday: [opening, closing],
   };
-
-  console.log(restaurant_times.friday[0]);
 
   const dish_data = {
     item1: {
@@ -104,53 +109,19 @@ export default function FoodDataProvider(props) {
       quantity: 0,
       error_code: null,
       total_price: 0,
-    },
-    item4: {
-      name: "Prawn Rogan Josh",
-      price: 11.99,
-      quantity: 0,
-      error_code: null,
-      total_price: 0,
-    },
-    item5: {
-      name: "Peshwari Naan",
-      price: 2.99,
-      quantity: 0,
-      error_code: null,
-      total_price: 0,
-    },
-    item6: {
-      name: "Roti",
-      price: 1.99,
-      quantity: 0,
-      error_code: null,
-      total_price: 0,
-    },
-    item7: {
-      name: "Chicken Tikka Masala",
-      price: 10.99,
-      quantity: 0,
-      error_code: null,
-      total_price: 0,
-    },
-    item8: {
-      name: "Lamb Jalfrezi",
-      price: 11.49,
-      quantity: 0,
-      error_code: null,
-      total_price: 0,
-    },
-  };
+    },};   
+  
 
   const [open,setOpen] = useState(openNow());
 
   const [errorMessage, setErrorMessage] = useState("");
   const [totalPriceItems, setTotalPriceItems] = useState([]);
 
+
+
   const [inventoryData, dispatchDishAddMinus] = useReducer(
     inventoryReducer,
-    dish_data
-  );
+    dish_data);
 
   const handleAdd = (dish) => {
     dispatchDishAddMinus({ type: "ADD", dish_item: dish });
@@ -159,6 +130,35 @@ export default function FoodDataProvider(props) {
   const handleMinus = (dish) => {
     dispatchDishAddMinus({ type: "MINUS", dish_item: dish });
   };
+
+  async function getUpdatedMenu(){
+    async function obtainData(){
+      const response = await fetch("");
+      console.log(response);
+      const my_data = await response.json();
+      console.log(my_data);
+      if (response.ok)
+      {
+      const my_processed_data = await Object.values(my_data)[0];
+      console.log(my_processed_data);
+      return my_processed_data;
+      }
+      else{
+      return null;
+      }
+      }; 
+
+      const returnedData = await obtainData();
+      if (returnedData != null)
+      {
+      dispatchDishAddMinus({ type: "UPDATE", dish_item: "dish", returnedData: returnedData});
+      }  
+  };
+
+  
+
+    
+
 
   function openNow() {
     const time_now = new Date();
@@ -215,10 +215,11 @@ export default function FoodDataProvider(props) {
         setTotalPriceItems: setTotalPriceItems,
         handleAdd: handleAdd,
         handleMinus: handleMinus,
+        getUpdatedMenu: getUpdatedMenu,
         restaurant_times: restaurant_times
       }}
     >
       {props.children}
     </FoodData.Provider>
   );
-}
+};

@@ -44,7 +44,6 @@ function Navigation(props) {
     // totalPriceItems, setTotalPriceItems
     <div className="grid_space">
       <div className="unit_one">
-        {" "}
         <OpenButton/>
       </div>
       <div className="unit_two"></div>

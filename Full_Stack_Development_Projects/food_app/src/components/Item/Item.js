@@ -1,19 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useCallback, useEffect} from "react";
 import FoodDataProvider, { FoodData } from "../Store/food-data";
 import "./Item.css";
 
 function Item(props) {
   const foodData = useContext(FoodData);
-  const dish__data = foodData.dish_data;
+  const dish_data = foodData.dish_data;
   const item_keys = Object.keys(foodData.dish_data);
   const handleAdd = foodData.handleAdd;
   const handleMinus = foodData.handleMinus;
+  const updateMenu = foodData.getUpdatedMenu;
 
-  return (
-    <React.Fragment>
-      {console.log(item_keys[0])} {console.log(foodData.dish_data.item1.name)}
-      {item_keys.map((item_number, index) => {
-        const item = dish__data[item_number];
+  let content = item_keys.map((item_number, index) => {
+        const item = dish_data[item_number];
         console.log(item_number);
         return (
           <div className="item" key={item}>
@@ -46,9 +44,15 @@ function Item(props) {
             </div>
           </div>
         );
-      })}
+      });
+
+  useEffect(()=>{updateMenu()},[]);
+
+  return (
+    <React.Fragment>
+    {content}
     </React.Fragment>
   );
-}
+};
 
 export default Item;
