@@ -1,23 +1,12 @@
 import React, { useReducer, useState, useCallback } from "react";
+import { openNow, restaurant_times } from "./open-now";
 
 function inventoryReducer(state, { type, dish_item, returnedData}) {
-  //   Object format to pass into Inventory Reducer via dispatchDishAddMinus
-  //   {
-  //     type: 'ADD' / 'MINUS',
-  //     dish_item: item1 / item2 / item3 etc depending on item in question
-  //   };
-  console.log(type);
-  console.log("This is the argument, dish_item" + dish_item);
+
   const dishItem = state[dish_item];
-  console.log("This is the dishItem : " + dishItem);
   const actionDishItem = dish_item;
-  console.log(actionDishItem);
   if (type === "ADD") {
-    console.log("ADD has been run...");
     if (dishItem.quantity === 5) {
-      {
-        /* */
-      }
       return { ...state, [dish_item]: { ...dishItem, error_code: 1 } };
     } else {
       return {
@@ -53,40 +42,75 @@ return {...state,
 }
 }
 
-export const FoodData = React.createContext({
-  // dish_data: inventoryData,
-  // setErrorMessage: setErrorMessage,
-  // errorMessage: errorMessage,
-  // totalPriceItems: totalPriceItems,
-  // setTotalPriceItems: setTotalPriceItems,
-  // dispatchDishAddMinus: dispatchDishAddMinus,
-});
 
-//The premise: create a component, which serves as the FoodData.Provider. As a functional component, it can change
-//and manage state, as well as including props and props.children. Any values it conveys must be included as value props
-//within the values prop and within the original context which was created.
+function formValidityReducer(state, { type, fieldName, fieldValue }) {
+  if (type === "UPDATE") {
+    if (fieldName === "fullName") {
+      const regExpressionFN = new RegExp(
+        /^([a-zA-Z\-']{2,}\u{0020}[a-zA-Z\-']{2,}\u{0020}?[a-zA-Z-']{2,}?)$/u
+      );
+      if (regExpressionFN.test(fieldValue)) {
+        return { ...state, fullName: fieldValue, fullNameIsValid: true };
+      } else {
+        return { ...state, fullNameIsValid: false };
+      }
+    } else if (fieldName === "flAddress") {
+      const regExpressionFLA = new RegExp(
+        /^([a-zA-Z\-'\d]{2,15}[\u{0020}]?[a-zA-Z0-9'-]{0,15}\u{0020}?[a-zA-Z0-9{2,15}]?)$/u
+      );
+      if (regExpressionFLA.test(fieldValue)) {
+        return { ...state, flAddress: fieldValue, flAddressIsValid: true };
+      } else {
+        return { ...state, flAddressIsValid: false };
+      }
+    } else if (fieldName === "slAddress") {
+      const regExpressionSLA = new RegExp(
+        /^([a-zA-Z\-'0-9]{2,}[\u{0020}]?[a-zA-Z0-9]{2,}\u{0020}?[a-zA-Z0-9]{2,}?)$/u
+      );
+      if (regExpressionSLA.test(fieldValue)) {
+        return { ...state, slAddress: fieldValue, slAddressIsValid: true };
+      } else {
+        return { ...state, slAddressIsValid: false };
+      }
+    } else if (fieldName === "postcode") {
+      const regExpressionPC = new RegExp(
+        /^([a-zA-Z0-9]{3,4}\u{0020}?[a-zA-Z0-9]{3,})$/u
+      );
+      if (regExpressionPC.test(fieldValue)) {
+        return { ...state, postcode: fieldValue };
+      } else {
+        return { ...state, postcode: "" };
+      }
+    } else if (fieldName === "postcodeValid") {
+      return { ...state, postcodeIsValid: fieldValue };
+    }
+  } else if (type === "SUBMIT") {
+    console.log("Submit logic activated in Reducer function...");
+    if (
+      state.flAddressIsValid &&
+      state.slAddressIsValid &&
+      state.fullNameIsValid &&
+      state.postcodeIsValid
+    ) {
+      return { ...state, postcodeIsValid: true, paymentFormIsValid: true };
+    } else {
+      return { ...state };
+    }
+  }
+};
+
+
+
+export const FoodData = React.createContext({});
+
+
 export default function FoodDataProvider(props) {
 
-  
-  const d = new Date();
-  d.setHours(12, 0, 0);
-  const opening = d.getHours();
-  console.log(opening);
-  let d2 = new Date();
-  d2.setHours(22, 0, 0);
-  const closing = d2.getHours();
-  console.log(closing);
+  const openCurrently = openNow();  
+  const [open,setOpen] = useState(openCurrently);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [totalPriceItems, setTotalPriceItems] = useState([]);  
 
-  const restaurant_times = {
-    r_name: "Dishoom",
-    monday: [opening, closing],
-    tuesday: [opening, closing],
-    wednesday: [opening, closing],
-    thursday: [opening, closing],
-    friday: [opening, closing],
-    saturday: [opening, closing],
-    sunday: [opening, closing],
-  };
 
   const dish_data = {
     item1: {
@@ -109,14 +133,9 @@ export default function FoodDataProvider(props) {
       quantity: 0,
       error_code: null,
       total_price: 0,
-    },};   
+    },};  
+
   
-
-  const [open,setOpen] = useState(openNow());
-
-  const [errorMessage, setErrorMessage] = useState("");
-  const [totalPriceItems, setTotalPriceItems] = useState([]);
-
 
 
   const [inventoryData, dispatchDishAddMinus] = useReducer(
@@ -133,77 +152,100 @@ export default function FoodDataProvider(props) {
 
   async function getUpdatedMenu(){
     async function obtainData(){
-      const response = await fetch("");
-      console.log(response);
+      try {
+      const response = await fetch("https://quappa-373b1-default-rtdb.europe-west1.firebasedatabase.app/menu.json");
       const my_data = await response.json();
-      console.log(my_data);
       if (response.ok)
       {
       const my_processed_data = await Object.values(my_data)[0];
       console.log(my_processed_data);
       return my_processed_data;
       }
-      else{
-      return null;
       }
-      }; 
+      catch(error)
+      {
+        return null;
+      } 
+    }
 
       const returnedData = await obtainData();
-      if (returnedData != null)
-      {
-      dispatchDishAddMinus({ type: "UPDATE", dish_item: "dish", returnedData: returnedData});
-      }  
+
+    if (returnedData !== null)
+    {
+      dispatchDishAddMinus({ type: "UPDATE", dish_item: "dish", returnedData: returnedData}); 
+    }
+  
   };
+
+
+  const startingPaymentForm = {
+    postcode: "",
+    postcodeIsValid: false,
+    fullName: "",
+    fullNameIsValid: false,
+    flAddress: "",
+    flAddressIsValid: false,
+    slAddress: "",
+    slAddressIsValid: false,
+    paymentFormIsValid: false,
+  };
+
+  const [paymentForm, dispatchFieldValidity] = useReducer(
+    formValidityReducer,
+    startingPaymentForm
+  );
+
+  function inputBlurHandler(event) {
+    switch (event.target.id) {
+      case "fullName":
+        dispatchFieldValidity({
+          type: "UPDATE",
+          fieldName: "fullName",
+          fieldValue: event.target.value,
+        });
+        break;
+      case "flAddress":
+        dispatchFieldValidity({
+          type: "UPDATE",
+          fieldName: "flAddress",
+          fieldValue: event.target.value,
+        });
+        break;
+      case "slAddress":
+        dispatchFieldValidity({
+          type: "UPDATE",
+          fieldName: "slAddress",
+          fieldValue: event.target.value,
+        });
+        break;
+      case "postcode":
+        dispatchFieldValidity({
+          type: "UPDATE",
+          fieldName: "postcode",
+          fieldValue: event.target.value,
+        });
+        break;
+      default:
+        break;
+    }
+  }
+
+
+  function checkPostCode(postcodeValid){
+    dispatchFieldValidity({
+      type: "UPDATE",
+      fieldName: "postcodeValid",
+      fieldValue: [postcodeValid],
+    });
+    dispatchFieldValidity({ type: "SUBMIT" });
+  };
+
+
+
 
   
 
-    
 
-
-  function openNow() {
-    const time_now = new Date();
-    const day = time_now.getDay();
-    const time = time_now.getHours();
-    console.log(restaurant_times.friday[0]);
-    if (
-      day == 0 &&
-      restaurant_times.sunday[0] <= time < restaurant_times.sunday[1]
-    ) {
-      return true;
-    } else if (
-      day == 1 &&
-      restaurant_times.monday[0] <= time < restaurant_times.monday[1]
-    ) {
-      return true;
-    } else if (
-      day == 2 &&
-      restaurant_times.tuesday[0] <= time < restaurant_times.tuesday[1]
-    ) {
-      return true;
-    } else if (
-      day == 3 &&
-      restaurant_times.wednesday[0] <= time < restaurant_times.wednesday[1]
-    ) {
-      return true;
-    } else if (
-      day == 4 &&
-      restaurant_times.thursday[0] <= time < restaurant_times.thursday[1]
-    ) {
-      return true;
-    } else if (
-      day == 5 &&
-      restaurant_times.friday[0] <= time < restaurant_times.friday[1]
-    ) {
-      return true;
-    } else if (
-      day == 6 &&
-      restaurant_times.saturday[0] <= time < restaurant_times.saturday[1]
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 
   return (
     <FoodData.Provider
@@ -216,7 +258,10 @@ export default function FoodDataProvider(props) {
         handleAdd: handleAdd,
         handleMinus: handleMinus,
         getUpdatedMenu: getUpdatedMenu,
-        restaurant_times: restaurant_times
+        restaurant_times: restaurant_times,
+        paymentForm,
+        inputBlurHandler,
+        checkPostCode,
       }}
     >
       {props.children}

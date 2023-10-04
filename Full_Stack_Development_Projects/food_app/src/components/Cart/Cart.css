@@ -8,10 +8,14 @@
     border-bottom-right-radius:25% 50%;
     border-top-left-radius:25% 50%;
     border-bottom-left-radius:25% 50%;
-    max-width:150px;
+    /* max-width:150px;
     max-height:80px;
     min-width:20vh;
-    min-height:15vh;
+    min-height:15vh; */
+    min-height: 6rem;
+    min-width: 12rem;
+    max-height: 100px;
+    max-width: 100px;
     font-size: .7rem;
 }
 

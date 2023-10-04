@@ -15,6 +15,8 @@
   padding: 5%;
 }
 
+
+
 .first_column {
   display: flex;
   flex-direction: column;
@@ -42,11 +44,10 @@
 
 .back_panel {
   width: 10vw;
+  height:45vh;
   display: flex;
   align-items: center;
-  top: -5%;
   left: 2%;
-  height: 70vh;
   position: absolute;
 }
 
@@ -58,28 +59,107 @@
   border-spacing: 16vw 0;
 }
 
-.pay_form {
-  margin-left: 5%;
+.pay_dialogue_mobile {
+  z-index: 99;
+  position: absolute;
+  background-color: white;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70vw;
+  opacity: 98%;
+  margin: 16%;
+  margin-left: 10%;
+  margin-top: 15%;
+  border: black solid 1px;
+  border-radius: 5% / 5%;
+  padding: 5%;
+}
+
+.total_table_mobile {
+  margin-top: -2%;
+  margin-left: -10%;
+  max-width: 30vw;
+  border-collapse: separate;
+  border-spacing: 5rem 0;
+}
+
+.pay_form_mobile {
+  margin-left: 14%;
+  max-width: 5rem;
+  min-width: 4rem;
+  max-height: 4rem;
+  margin-bottom: 5%;
+}
+
+.pay_form_mobile .first_entries_mobile {
+  margin-top: 5%;
+  min-width: 3rem;
+  min-height: 5vh;
+  margin-right: 0%;
+}
+
+.pay_form_mobile .postcode {
+  margin-top: 5%;
+  width: 5rem;
+  min-height: 5vh;
+  margin-left: -15%;
+  margin-right: 10%;
+  position: relative;
+}
+
+.image_placeholder_mobile {
+  margin:5%;
+  margin-left:12%;
+  width: 12rem; 
+  height: 9rem;
+  background-image: url("../../assets/payImage.jpg");
+  background-size: cover;
+}
+
+
+/*   margin-left: 5%;
   max-width: 35vw;
   min-width: 35vw;
+  max-height: 30vh;
+  margin-bottom: 5%; */
+
+.pay_form {
+  margin-left: 5%;
+  max-width: 33vw;
+  min-width: 33vw;
   max-height: 30vh;
   margin-bottom: 5%;
 }
 
+/* margin-top: 5%;
+  min-width: 30vw;
+  min-height: 5vh; */
+
+
+  
+
+
 .pay_form .first_entries {
   margin-top: 5%;
-  min-width: 30vw;
-  min-height: 5vh;
+  min-width: 8rem;
+  min-height: 2.0rem;
+  margin-right: 50%;
 }
+
+
 
 .pay_form .postcode {
   margin-top: 5%;
-  width: 15vw;
+  width: 5rem;
   min-height: 5vh;
-  margin-left: 0%;
-  margin-right: 10%;
+  margin-left: -16%;
+  margin-right: 5%;
   position: relative;
 }
+
+
 
 .pay {
   background-color: #661249;
@@ -89,18 +169,27 @@
   min-height: 5vh;
   min-width: 12vw;
 }
-
+/* 32vw w 35vh */
 .image_placeholder {
-  width: 32vw;
+  width: 32vw; 
   display: flex;
-  height: 35vw;
+  height: 16rem;
+  margin-top:-5%;
   background-image: url("../../assets/payImage.jpg");
   background-size: cover;
 }
+
 
 .pay_exit {
   background-color: lightgrey;
   border: none;
   color: white;
   font-size: 1rem;
+}
+
+.button_div {
+  max-width: 16rem;
+  display: flex;
+  justify-content: flex-end;
+
 }
